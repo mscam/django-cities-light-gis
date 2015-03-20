@@ -1,12 +1,10 @@
-
-
 import six
 import re
 
 from django.utils.encoding import python_2_unicode_compatible
 
 from django.utils.encoding import force_text
-from django.db import models
+from django.contrib.gis.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from unidecode import unidecode
@@ -151,6 +149,8 @@ class AbstractCity(Base):
         null=True, blank=True)
     longitude = models.DecimalField(max_digits=8, decimal_places=5,
         null=True, blank=True)
+
+    geometry = models.PointField(blank=True, null=True)
 
     region = models.ForeignKey(CITIES_LIGHT_APP_NAME + '.Region', blank=True,
                                null=True)

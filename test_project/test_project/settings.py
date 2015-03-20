@@ -25,6 +25,8 @@ FIXTURE_DIRS = [
 
 MANAGERS = ADMINS
 
+SPATIALITE_LIBRARY_PATH='/usr/local/lib/mod_spatialite.dylib'
+
 CITIES_LIGHT_CITY_SOURCES = [
     'http://download.geonames.org/export/dump/%s.zip' %
     os.environ.get('CITIES_LIGHT_CITY_SOURCE', 'cities15000'),
@@ -32,7 +34,7 @@ CITIES_LIGHT_CITY_SOURCES = [
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.contrib.gis.db.backends.spatialite',
         'NAME': 'db.sqlite',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
@@ -140,6 +142,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    'django.contrib.gis',
     'cities_light',
 )
 

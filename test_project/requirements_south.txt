@@ -1,0 +1,5 @@
+Django==1.6.11
+django-autoslug==1.7.2
+six==1.9.0
+Unidecode==0.4.17
+South

@@ -367,6 +367,9 @@ It is possible to force the import of files which weren't downloaded using the
         if not city.longitude:
             city.longitude = items[5]
             save = True
+        
+        if not city.geometry:
+            city.gemometry = "POINT({} {})".format(items[5], items[4])
 
         if not city.population:
             city.population = items[14]

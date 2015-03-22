@@ -159,6 +159,8 @@ class AbstractCity(Base):
     feature_code = models.CharField(max_length=10, null=True, blank=True,
                                     db_index=True)
 
+    objects = models.GeoManager()
+
     class Meta(Base.Meta):
         unique_together = (('region', 'name'), ('region', 'slug'))
         verbose_name_plural = _('cities')

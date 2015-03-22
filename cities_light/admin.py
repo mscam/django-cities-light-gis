@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from copy import copy
 
-from django.contrib import admin
+from django.contrib.gis import admin
 from django.contrib.admin.views.main import ChangeList
 
 from .forms import *
@@ -70,7 +70,7 @@ class CityChangeList(ChangeList):
     get_queryset = get_query_set
 
 
-class CityAdmin(admin.ModelAdmin):
+class CityAdmin(admin.OSMGeoAdmin):
     """
     ModelAdmin for City.
     """

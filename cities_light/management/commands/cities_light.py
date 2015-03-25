@@ -19,6 +19,7 @@ from django.db import transaction, connection
 from django.core.management.base import BaseCommand
 from django.db import transaction, reset_queries, IntegrityError
 from django.utils.encoding import force_text
+from django.contrib.gis.geos import GEOSGeometry
 
 from ...vendor import progressbar
 
@@ -369,7 +370,7 @@ It is possible to force the import of files which weren't downloaded using the
             save = True
         
         if not city.geometry:
-            city.geometry = "POINT({} {})".format(items[5], items[4])
+            city.geometry = GEOSGeometry("POINT({} {})".format(items[5], items[4]))
 
         if not city.population:
             city.population = items[14]
